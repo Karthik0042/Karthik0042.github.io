@@ -61,12 +61,14 @@ $darker-gray                : mix(#000, $gray, 60%);
 $light-gray                 : mix(#fff, $gray, 50%);
 $lighter-gray               : mix(#fff, $gray, 90%);
 
-$body-color                 : #fff;
-$background-color           : #fff;
-$code-background-color      : #fafafa;
-$code-background-color-dark : $light-gray;
-$text-color                 : $dark-gray;
-$border-color               : $lighter-gray;
+$gold-color                 : #d4af37;
+
+$body-color                 : #181818;
+$background-color           : #181818;
+$code-background-color      : #232323;
+$code-background-color-dark : #101010;
+$text-color                 : #e6e6e6;
+$border-color               : #3a3a3a;
 
 $primary-color              : #7a8288;
 $success-color              : #62c462;
