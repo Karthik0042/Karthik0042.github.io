@@ -6,7 +6,7 @@
   position: fixed;
   background:
     linear-gradient(rgba(8, 4, 4, 0.55), rgba(8, 4, 4, 0.72)),
-    url('/images/masthead-bg.jpg') center 35% / cover no-repeat;
+    url('/images/masthead-bg.jpg') center center / cover no-repeat;
   background-color: $background-color;
   border-bottom: 1px solid rgba(220, 20, 60, 0.35);
   box-shadow: 0 2px 14px 0 rgba(220, 20, 60, 0.22);
