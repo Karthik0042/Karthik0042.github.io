@@ -14,3 +14,6 @@ main:
 
   - title: "Hobbies and Interests"
     url: /hobbies/
+
+  - title: "CV/Resume"
+    url: /cv/
