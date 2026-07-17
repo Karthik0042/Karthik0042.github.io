@@ -2,29 +2,20 @@
    MASTHEAD
    ========================================================================== */
 
-@keyframes masthead-glow-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
 .masthead {
   position: fixed;
-  background: repeating-linear-gradient(
-    120deg,
-    mix($crimson-color, $background-color, 16%) 0px,
-    mix($crimson-color, $background-color, 16%) 36px,
-    mix($crimson-color, $background-color, 30%) 36px,
-    mix($crimson-color, $background-color, 30%) 72px
-  );
-  background-size: 220% 220%;
-  border-bottom: 1px solid $border-color;
+  background:
+    linear-gradient(rgba(8, 4, 4, 0.55), rgba(8, 4, 4, 0.72)),
+    url('/images/masthead-bg.jpg') center 35% / cover no-repeat;
+  background-color: $background-color;
+  border-bottom: 1px solid rgba(220, 20, 60, 0.35);
   box-shadow: 0 2px 14px 0 rgba(220, 20, 60, 0.22);
   height: $masthead-height;
   top: 0;
   width: 100%;
 
-  -webkit-animation: intro 0.3s both, masthead-glow-shift 10s ease-in-out infinite;
-          animation: intro 0.3s both, masthead-glow-shift 10s ease-in-out infinite;
+  -webkit-animation: intro 0.3s both;
+          animation: intro 0.3s both;
   -webkit-animation-delay: 0.15s;
           animation-delay: 0.15s;
   z-index: 20;
