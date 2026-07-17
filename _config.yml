@@ -8,9 +8,9 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "R Karthik"
+title                    : "Karthik R"
 title_separator          : "-"
-name                     : &name "R Karthik"
+name                     : &name "Karthik R"
 description              : &description "personal description"
 url                      : https://Karthik0042.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -22,7 +22,7 @@ repository               : "Karthik0042.github.io"
 author:
   # Biographic information
   avatar           : "New_Profile_Pic.jpg"
-  name             : "R Karthik"
+  name             : "Karthik R"
   pronouns         : # example: "she/her"  
   bio              : "Life Finds a way"
   location         : "Chennai"
