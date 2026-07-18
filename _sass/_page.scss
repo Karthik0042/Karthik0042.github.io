@@ -34,9 +34,37 @@
   }
 }
 
+@keyframes page-title-glow {
+  0%, 100% {
+    text-shadow: 0 0 14px rgba(212, 175, 55, 0.55), 0 0 32px rgba(220, 20, 60, 0.35);
+  }
+  33% {
+    text-shadow: 0 0 14px rgba(220, 20, 60, 0.55), 0 0 32px rgba(192, 192, 192, 0.35);
+  }
+  66% {
+    text-shadow: 0 0 14px rgba(192, 192, 192, 0.55), 0 0 32px rgba(212, 175, 55, 0.35);
+  }
+}
+
 .page__title {
-  margin-top: 0;
-  line-height: 1;
+  margin: 0 0 0.6em;
+  line-height: 1.15;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.2em;
+  background: linear-gradient(90deg, $gold-color, $crimson-color 50%, $silver-color);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: page-title-glow 4s ease-in-out infinite;
+
+  @include breakpoint($medium) {
+    font-size: 3em;
+  }
+
+  @include breakpoint($large) {
+    font-size: 3.6em;
+  }
 
   & + .page__meta {
     margin-top: -0.5em;
