@@ -301,6 +301,7 @@ defaults:
       type: courses
     values:
       layout: course-single
+      author_profile: true
       comments: true
 
 

@@ -1,10 +1,11 @@
 {% assign courses = site.courses | sort: "order" %}
 
-<div class="courses-grid">
-  {% for course in courses %}
-    <a class="course-box" href="{{ course.url | relative_url }}">
-      <span class="course-box__code">{{ course.code }}</span>
-      <span class="course-box__name">{{ course.name }}</span>
-    </a>
-  {% endfor %}
+<div class="courses-panel" id="academic-courses">
+  <h2 class="courses-panel__heading">Academic Courses</h2>
+
+  <ul class="courses-panel__list">
+    {% for course in courses %}
+      <li><a href="{{ course.url | relative_url }}">{{ course.code }} &mdash; {{ course.name }}</a></li>
+    {% endfor %}
+  </ul>
 </div>

@@ -2,71 +2,83 @@
 layout: default
 ---
 
-<div class="course-detail">
+{% include base_path %}
 
-  <header class="course-detail__header">
-    <p class="course-detail__code">{{ page.code }}</p>
-    <h1 class="course-detail__title">{{ page.name }}</h1>
-    <div class="course-detail__underline"></div>
-  </header>
+<div id="main" role="main">
+  {% include sidebar.html %}
 
-  <div class="course-detail__card">
+  <article class="page">
+    <div class="page__inner-wrap">
 
-    {% if page.objectives and page.objectives != "" %}
-      <section class="course-detail__section">
-        <h2>Course Objectives</h2>
-        <div class="course-detail__text">{{ page.objectives | markdownify }}</div>
+      <header class="course-detail__header">
+        <p class="course-detail__code">{{ page.code }}</p>
+        <h1 class="course-detail__title">{{ page.name }}</h1>
+        <div class="course-detail__underline"></div>
+      </header>
+
+      <section class="page__content course-detail__content">
+
+        <div class="course-detail__card">
+
+          {% if page.objectives and page.objectives != "" %}
+            <section class="course-detail__section">
+              <h2>Course Objectives</h2>
+              <div class="course-detail__text">{{ page.objectives | markdownify }}</div>
+            </section>
+          {% endif %}
+
+          {% if page.learnings and page.learnings != "" %}
+            <section class="course-detail__section">
+              <h2>What I Learnt</h2>
+              <div class="course-detail__text">{{ page.learnings | markdownify }}</div>
+            </section>
+          {% endif %}
+
+          {% if page.projects and page.projects.size > 0 %}
+            <section class="course-detail__section">
+              <h2>Projects</h2>
+              <ul class="course-detail__list">
+                {% for project in page.projects %}
+                  <li>
+                    {% if project.link %}
+                      <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer">{{ project.title }}</a>
+                    {% else %}
+                      {{ project.title }}
+                    {% endif %}
+                    {% if project.description %} &mdash; {{ project.description }}{% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </section>
+          {% endif %}
+
+          {% if page.resources and page.resources.size > 0 %}
+            <section class="course-detail__section">
+              <h2>Assignments &amp; Resources</h2>
+              <ul class="course-detail__list">
+                {% for resource in page.resources %}
+                  <li><a href="{{ resource.link }}" target="_blank" rel="noopener noreferrer">{{ resource.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </section>
+          {% endif %}
+
+          {% if content and content != "" %}
+            <section class="course-detail__section">
+              {{ content }}
+            </section>
+          {% endif %}
+
+          {% unless page.objectives != "" or page.learnings != "" or page.projects.size > 0 or page.resources.size > 0 or content != "" %}
+            <p class="course-detail__placeholder">Details for this course are coming soon.</p>
+          {% endunless %}
+
+        </div>
+
+        <a class="course-detail__back" href="{{ '/portfolio/#academic-courses' | relative_url }}">&larr; Back to Portfolio</a>
+
       </section>
-    {% endif %}
 
-    {% if page.learnings and page.learnings != "" %}
-      <section class="course-detail__section">
-        <h2>What I Learnt</h2>
-        <div class="course-detail__text">{{ page.learnings | markdownify }}</div>
-      </section>
-    {% endif %}
-
-    {% if page.projects and page.projects.size > 0 %}
-      <section class="course-detail__section">
-        <h2>Projects</h2>
-        <ul class="course-detail__list">
-          {% for project in page.projects %}
-            <li>
-              {% if project.link %}
-                <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer">{{ project.title }}</a>
-              {% else %}
-                {{ project.title }}
-              {% endif %}
-              {% if project.description %} &mdash; {{ project.description }}{% endif %}
-            </li>
-          {% endfor %}
-        </ul>
-      </section>
-    {% endif %}
-
-    {% if page.resources and page.resources.size > 0 %}
-      <section class="course-detail__section">
-        <h2>Assignments &amp; Resources</h2>
-        <ul class="course-detail__list">
-          {% for resource in page.resources %}
-            <li><a href="{{ resource.link }}" target="_blank" rel="noopener noreferrer">{{ resource.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </section>
-    {% endif %}
-
-    {% if content and content != "" %}
-      <section class="course-detail__section">
-        {{ content }}
-      </section>
-    {% endif %}
-
-    {% unless page.objectives != "" or page.learnings != "" or page.projects.size > 0 or page.resources.size > 0 or content != "" %}
-      <p class="course-detail__placeholder">Details for this course are coming soon.</p>
-    {% endunless %}
-
-  </div>
-
-  <a class="course-detail__back" href="{{ '/portfolio/#academic-courses' | relative_url }}">&larr; Back to Portfolio</a>
-
+    </div>
+  </article>
 </div>
