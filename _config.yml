@@ -218,6 +218,8 @@ collections:
   hobbies:
     output: true
     permalink: /:collection/:path/
+  courses:
+    output: false
 
 
 # Defaults
@@ -292,6 +294,12 @@ defaults:
       layout: single
       author_profile: true
       share: true
+  # _courses
+  - scope:
+      path: ""
+      type: courses
+    values:
+      layout: single
       comments: true
 
 

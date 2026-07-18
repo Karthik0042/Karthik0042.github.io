@@ -1,0 +1,129 @@
+/* Academic Courses accordion */
+
+.courses-section {
+  margin: 1.5em 0 2em;
+}
+
+.course-card {
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  margin-bottom: 0.75em;
+  background-color: $code-background-color;
+  overflow: hidden;
+
+  & + .course-card {
+    margin-top: 0.75em;
+  }
+
+  &[open] > .course-card__summary {
+    border-bottom: 1px solid $border-color;
+
+    .course-card__chevron {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.course-card__summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  padding: 0.9em 1.1em;
+  font-weight: bold;
+  color: $text-color;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:hover {
+    color: $gold-color;
+  }
+}
+
+.course-card__code {
+  display: inline-block;
+  padding: 0.15em 0.6em;
+  border-radius: 4px;
+  background-color: $crimson-color;
+  color: #fff;
+  font-size: 0.8em;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}
+
+.course-card__name {
+  flex: 1;
+}
+
+.course-card__chevron {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+  color: $primary-color;
+}
+
+.course-card__body {
+  padding: 1em 1.1em 1.2em;
+}
+
+.course-subsection {
+  border-left: 2px solid $border-color;
+  padding-left: 0.9em;
+  margin-bottom: 0.75em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  > summary {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.95em;
+    color: $silver-color;
+    padding: 0.3em 0;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: "▸";
+      display: inline-block;
+      margin-right: 0.5em;
+      transition: transform 0.15s ease;
+    }
+
+    &:hover {
+      color: $gold-color;
+    }
+  }
+
+  &[open] > summary::before {
+    transform: rotate(90deg);
+  }
+}
+
+.course-subsection__box {
+  background-color: $code-background-color-dark;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  padding: 0.75em 1em;
+  margin-top: 0.4em;
+  font-size: 0.95em;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  ul {
+    margin-bottom: 0;
+  }
+}
+
+.course-subsection__placeholder {
+  color: $primary-color;
+  font-style: italic;
+}
