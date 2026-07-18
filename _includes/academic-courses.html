@@ -1,76 +1,10 @@
 {% assign courses = site.courses | sort: "order" %}
 
-<div class="courses-section">
+<div class="courses-grid">
   {% for course in courses %}
-    <details class="course-card">
-      <summary class="course-card__summary">
-        <span class="course-card__code">{{ course.code }}</span>
-        <span class="course-card__name">{{ course.name }}</span>
-        <i class="fa fa-chevron-down course-card__chevron" aria-hidden="true"></i>
-      </summary>
-
-      <div class="course-card__body">
-
-        <details class="course-subsection">
-          <summary>Course Objectives</summary>
-          <div class="course-subsection__box">
-            {% if course.objectives and course.objectives != "" %}
-              {{ course.objectives | markdownify }}
-            {% else %}
-              <p class="course-subsection__placeholder">Add course objectives here.</p>
-            {% endif %}
-          </div>
-        </details>
-
-        <details class="course-subsection">
-          <summary>What I Learnt</summary>
-          <div class="course-subsection__box">
-            {% if course.learnings and course.learnings != "" %}
-              {{ course.learnings | markdownify }}
-            {% else %}
-              <p class="course-subsection__placeholder">Add what you learnt here.</p>
-            {% endif %}
-          </div>
-        </details>
-
-        <details class="course-subsection">
-          <summary>Projects</summary>
-          <div class="course-subsection__box">
-            {% if course.projects and course.projects.size > 0 %}
-              <ul>
-                {% for project in course.projects %}
-                  <li>
-                    {% if project.link %}
-                      <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer">{{ project.title }}</a>
-                    {% else %}
-                      {{ project.title }}
-                    {% endif %}
-                    {% if project.description %} &mdash; {{ project.description }}{% endif %}
-                  </li>
-                {% endfor %}
-              </ul>
-            {% else %}
-              <p class="course-subsection__placeholder">No projects added yet.</p>
-            {% endif %}
-          </div>
-        </details>
-
-        <details class="course-subsection">
-          <summary>Assignments &amp; Resources</summary>
-          <div class="course-subsection__box">
-            {% if course.resources and course.resources.size > 0 %}
-              <ul>
-                {% for resource in course.resources %}
-                  <li><a href="{{ resource.link }}" target="_blank" rel="noopener noreferrer">{{ resource.title }}</a></li>
-                {% endfor %}
-              </ul>
-            {% else %}
-              <p class="course-subsection__placeholder">No links added yet.</p>
-            {% endif %}
-          </div>
-        </details>
-
-      </div>
-    </details>
+    <a class="course-box" href="{{ course.url | relative_url }}">
+      <span class="course-box__code">{{ course.code }}</span>
+      <span class="course-box__name">{{ course.name }}</span>
+    </a>
   {% endfor %}
 </div>
