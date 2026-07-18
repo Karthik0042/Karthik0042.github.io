@@ -200,8 +200,38 @@
   }
 }
 
+@keyframes bio-audio-pulse {
+  0%, 100% {
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.7), 0 0 18px rgba(220, 20, 60, 0.45);
+  }
+  33% {
+    text-shadow: 0 0 8px rgba(220, 20, 60, 0.7), 0 0 18px rgba(192, 192, 192, 0.45);
+  }
+  66% {
+    text-shadow: 0 0 8px rgba(192, 192, 192, 0.7), 0 0 18px rgba(212, 175, 55, 0.45);
+  }
+}
+
 .author__bio {
+  display: inline-block;
   margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: $gold-color;
+  }
+
+  &.is-playing {
+    color: $gold-color;
+    animation: bio-audio-pulse 3s ease-in-out infinite;
+  }
 
   @include breakpoint($large) {
     margin-top: 10px;

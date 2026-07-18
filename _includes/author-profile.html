@@ -17,7 +17,39 @@
   <div class="author__content">
     <h3 class="author__name">{{ author.name }}</h3>
     {% if author.pronouns %}<p class="author__pronouns">{{ author.pronouns }}</p>{% endif %}
-    {% if author.bio %}<p class="author__bio">{{ author.bio }}</p>{% endif %}
+    {% if author.bio %}
+      <button type="button" class="author__bio" id="bio-audio-toggle" aria-pressed="false">{{ author.bio }}</button>
+      <audio id="bio-audio" preload="none" src="{{ base_path }}/audio/life_finds_a_way.m4a"></audio>
+      <script>
+        (function () {
+          var trigger = document.getElementById("bio-audio-toggle");
+          var audio = document.getElementById("bio-audio");
+          if (!trigger || !audio) return;
+
+          trigger.addEventListener("click", function () {
+            if (audio.paused) {
+              audio.currentTime = 0;
+              audio.play();
+            } else {
+              audio.pause();
+              audio.currentTime = 0;
+            }
+          });
+
+          audio.addEventListener("play", function () {
+            trigger.classList.add("is-playing");
+            trigger.setAttribute("aria-pressed", "true");
+          });
+
+          ["pause", "ended"].forEach(function (evt) {
+            audio.addEventListener(evt, function () {
+              trigger.classList.remove("is-playing");
+              trigger.setAttribute("aria-pressed", "false");
+            });
+          });
+        })();
+      </script>
+    {% endif %}
   </div>
 
   <div class="author__urls-wrapper">
