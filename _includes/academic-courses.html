@@ -1,11 +1,19 @@
-{% assign courses = site.courses | sort: "order" %}
+{% assign category_order = "Math and Computing|Core Biology|Computational Biology|Research Courses|Other" | split: "|" %}
 
 <div class="courses-panel" id="academic-courses">
   <h2 class="courses-panel__heading">Academic Courses</h2>
 
-  <ul class="courses-panel__list">
-    {% for course in courses %}
-      <li><a href="{{ course.url | relative_url }}">{{ course.code }} &mdash; {{ course.name }}</a></li>
-    {% endfor %}
-  </ul>
+  {% for category in category_order %}
+    {% assign cat_courses = site.courses | where: "category", category | sort: "code" %}
+    {% if cat_courses.size > 0 %}
+      <div class="courses-category">
+        <h3 class="courses-category__heading">{{ category }}</h3>
+        <ul class="courses-panel__list">
+          {% for course in cat_courses %}
+            <li><a href="{{ course.url | relative_url }}">{{ course.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  {% endfor %}
 </div>
