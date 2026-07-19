@@ -181,7 +181,8 @@
 }
 .sidebar .author__name {
   font-family: $sans-serif;
-  font-size: $type-size-5;
+  font-size: $type-size-2;
+  font-weight: bold;
 }
 
 .sidebar .author__desktop {
@@ -219,6 +220,7 @@
   border: none;
   background: none;
   font: inherit;
+  font-size: $type-size-6;
   color: inherit;
   cursor: pointer;
   transition: color 0.2s ease;
@@ -236,6 +238,17 @@
   @include breakpoint($large) {
     margin-top: 10px;
     margin-bottom: 20px;
+  }
+}
+
+.author__bio-attribution {
+  margin: 0.2em 0 0;
+  font-size: $type-size-7;
+  font-style: italic;
+  color: $primary-color;
+
+  @include breakpoint($large) {
+    margin-bottom: 10px;
   }
 }
 

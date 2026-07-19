@@ -19,6 +19,7 @@
     {% if author.pronouns %}<p class="author__pronouns">{{ author.pronouns }}</p>{% endif %}
     {% if author.bio %}
       <button type="button" class="author__bio" id="bio-audio-toggle" aria-pressed="false">{{ author.bio }}</button>
+      <p class="author__bio-attribution">&mdash; Ian Malcolm</p>
       <audio id="bio-audio" preload="none" src="{{ base_path }}/audio/life_finds_a_way.m4a"></audio>
       <script>
         (function () {
