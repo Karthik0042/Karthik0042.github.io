@@ -14,11 +14,12 @@
   margin: 0 0 1em;
   font-size: 1.6em;
   font-weight: bold;
-  background: linear-gradient(90deg, $gold-color, $crimson-color 55%, $silver-color);
+  letter-spacing: -0.01em;
+  background: linear-gradient(100deg, $gold-color 15%, $title-highlight-color 50%, $gold-color 85%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: page-title-glow 4s ease-in-out infinite;
+  animation: page-title-glow 6s ease-in-out infinite;
 }
 
 .courses-category {
@@ -82,8 +83,9 @@
   font-size: 2em;
   font-weight: bold;
   line-height: 1.3;
+  letter-spacing: -0.01em;
   margin: 0 0 0.6em;
-  background: linear-gradient(90deg, $gold-color, $crimson-color 55%, $silver-color);
+  background: linear-gradient(100deg, $gold-color 15%, $title-highlight-color 50%, $gold-color 85%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

@@ -203,13 +203,10 @@
 
 @keyframes bio-audio-pulse {
   0%, 100% {
-    text-shadow: 0 0 8px rgba(212, 175, 55, 0.7), 0 0 18px rgba(220, 20, 60, 0.45);
+    text-shadow: 0 0 8px rgba(220, 20, 60, 0.35), 0 0 16px rgba(212, 175, 55, 0.25);
   }
-  33% {
-    text-shadow: 0 0 8px rgba(220, 20, 60, 0.7), 0 0 18px rgba(192, 192, 192, 0.45);
-  }
-  66% {
-    text-shadow: 0 0 8px rgba(192, 192, 192, 0.7), 0 0 18px rgba(212, 175, 55, 0.45);
+  50% {
+    text-shadow: 0 0 12px rgba(220, 20, 60, 0.55), 0 0 22px rgba(212, 175, 55, 0.4);
   }
 }
 

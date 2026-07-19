@@ -36,13 +36,10 @@
 
 @keyframes page-title-glow {
   0%, 100% {
-    text-shadow: 0 0 14px rgba(212, 175, 55, 0.55), 0 0 32px rgba(220, 20, 60, 0.35);
+    text-shadow: 0 0 18px rgba(220, 20, 60, 0.22), 0 0 38px rgba(212, 175, 55, 0.16);
   }
-  33% {
-    text-shadow: 0 0 14px rgba(220, 20, 60, 0.55), 0 0 32px rgba(192, 192, 192, 0.35);
-  }
-  66% {
-    text-shadow: 0 0 14px rgba(192, 192, 192, 0.55), 0 0 32px rgba(212, 175, 55, 0.35);
+  50% {
+    text-shadow: 0 0 26px rgba(220, 20, 60, 0.36), 0 0 52px rgba(212, 175, 55, 0.24);
   }
 }
 
@@ -52,11 +49,12 @@
   text-align: center;
   font-weight: bold;
   font-size: 2.2em;
-  background: linear-gradient(90deg, $gold-color, $crimson-color 50%, $silver-color);
+  letter-spacing: -0.01em;
+  background: linear-gradient(100deg, $gold-color 15%, $title-highlight-color 50%, $gold-color 85%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: page-title-glow 4s ease-in-out infinite;
+  animation: page-title-glow 6s ease-in-out infinite;
 
   @include breakpoint($medium) {
     font-size: 3em;
