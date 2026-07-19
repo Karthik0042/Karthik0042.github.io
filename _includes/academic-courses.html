@@ -6,7 +6,7 @@
   {% for category in category_order %}
     {% assign cat_courses = site.courses | where: "category", category | sort: "code" %}
     {% if cat_courses.size > 0 %}
-      <div class="courses-category">
+      <div class="courses-category" id="category-{{ category | slugify }}">
         <h3 class="courses-category__heading">{{ category }}</h3>
         <ul class="courses-panel__list">
           {% for course in cat_courses %}

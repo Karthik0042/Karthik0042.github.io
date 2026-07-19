@@ -1,0 +1,21 @@
+{% assign category_order = "Math and Computing|Core Biology|Computational Biology|Research Courses|Other" | split: "|" %}
+
+<nav class="portfolio-nav" aria-label="Portfolio contents">
+  <h3 class="portfolio-nav__title">On This Page</h3>
+  <ul class="portfolio-nav__list">
+    <li>
+      <a href="#academic-courses">Academic Courses</a>
+      <ul class="portfolio-nav__sublist">
+        {% for category in category_order %}
+          {% assign cat_courses = site.courses | where: "category", category %}
+          {% if cat_courses.size > 0 %}
+            <li><a href="#category-{{ category | slugify }}">{{ category }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </li>
+    <li>
+      <a href="#projects">Projects</a>
+    </li>
+  </ul>
+</nav>
