@@ -1,0 +1,34 @@
+{% assign videos = site.videos | sort: "order" %}
+
+<div class="courses-panel" id="featured-videos">
+  <h2 class="courses-panel__heading">Featured Videos</h2>
+
+  <div class="video-grid">
+    {% for video in videos %}
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/{{ video.youtube_id }}"
+            title="{{ video.title }}"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"></iframe>
+        </div>
+
+        <h3 class="video-card__title">{{ video.title }}</h3>
+
+        <details class="video-card__summary">
+          <summary>Summary</summary>
+          <div class="video-card__summary-text">
+            {% if video.summary and video.summary != "" %}
+              {{ video.summary | markdownify }}
+            {% else %}
+              <p class="course-detail__placeholder">Add a quick summary of this feature here.</p>
+            {% endif %}
+          </div>
+        </details>
+      </div>
+    {% endfor %}
+  </div>
+</div>
