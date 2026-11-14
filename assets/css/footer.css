@@ -1,0 +1,86 @@
+/* Fixed footer bar with affiliation logos (all pages). */
+:root { --affil-bar-h: 64px; }
+
+body { padding-bottom: var(--affil-bar-h); }
+
+.page__footer {
+  position: fixed !important;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  height: var(--affil-bar-h);
+  margin: 0 !important;
+  background: rgba(14, 14, 14, 0.94) !important;
+  border-top: 1px solid rgba(212, 175, 55, 0.35);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  animation: none !important;
+}
+.page__footer footer { margin: 0 auto !important; padding: 0 1em !important; height: 100%; }
+
+.affil-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4em;
+  height: 100%;
+}
+.affil-bar__label {
+  flex: none;
+  color: #d4af37;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+.affil-bar__list {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.affil-bar__list::-webkit-scrollbar { display: none; }
+.affil-bar__list li { flex: none; margin: 0; }
+.affil-bar__list a { display: block; text-decoration: none !important; }
+
+/* Logos sit on a light tile so dark wordmarks stay readable on the black bar */
+.affil-bar__logo {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 160px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: #f4f4f4;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.affil-bar__list a:hover .affil-bar__logo { opacity: 1; transform: translateY(-1px); }
+
+/* Text badge shown until a logo file is added */
+.affil-bar__name {
+  display: block;
+  padding: 0.45em 0.9em;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 999px;
+  color: #f5f5f5;
+  font-size: 12px;
+  white-space: nowrap;
+  transition: border-color 0.2s, color 0.2s;
+}
+.affil-bar__list a:hover .affil-bar__name { border-color: #d4af37; color: #d4af37; }
+
+@media (max-width: 700px) {
+  :root { --affil-bar-h: 56px; }
+  .affil-bar { justify-content: flex-start; gap: 0.8em; }
+  .affil-bar__label { display: none; }
+  .affil-bar__logo { height: 32px; }
+}
+
+/* Side DNA strands stop above the bar */
+.dna-rail { bottom: var(--affil-bar-h) !important; }

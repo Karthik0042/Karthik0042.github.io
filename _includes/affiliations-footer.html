@@ -1,0 +1,23 @@
+{% comment %}
+Fixed footer bar with affiliation logos. Entries live in _data/affiliations.yml; logo files go in
+images/affiliations/. If a logo file is missing, the name is shown as a text badge instead.
+{% endcomment %}{% include base_path %}
+<link rel="stylesheet" href="{{ base_path }}/assets/css/footer.css">
+<div class="affil-bar">
+  <span class="affil-bar__label">Affiliations</span>
+  <ul class="affil-bar__list">
+    {% for a in site.data.affiliations %}
+      {% assign logo_path = "/images/affiliations/" | append: a.logo %}
+      {% assign logo_file = site.static_files | where: "path", logo_path | first %}
+      <li>
+        <a href="{{ a.url }}" target="_blank" rel="noopener" title="{{ a.name }}">
+          {% if logo_file %}
+            <img class="affil-bar__logo" src="{{ base_path }}{{ logo_path }}" alt="{{ a.name }}" loading="lazy">
+          {% else %}
+            <span class="affil-bar__name">{{ a.name }}</span>
+          {% endif %}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

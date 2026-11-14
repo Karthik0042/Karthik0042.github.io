@@ -14,7 +14,7 @@ helix fills its width and runs off the top and bottom. Included from _layouts/de
 </div>
 <script>
 (function () {
-  // Fit the camera so the helix (about 2.9 units across incl. phosphates) fills the strip's width.
+  /* Fit the camera so the helix (about 2.9 units across incl. phosphates) fills the strip width. */
   var HALF_WIDTH = 1.45, TAN_HALF_FOV = Math.tan(15 * Math.PI / 180);
   function fit() {
     document.querySelectorAll('.dna-rail model-viewer').forEach(function (mv) {
@@ -28,7 +28,7 @@ helix fills its width and runs off the top and bottom. Included from _layouts/de
   }
   document.querySelectorAll('.dna-rail model-viewer').forEach(function (mv) {
     mv.addEventListener('load', fit);
-    if (mv.loaded) fit();            // model may have loaded before this script ran
+    if (mv.loaded) fit();            /* model may have loaded before this script ran */
   });
   customElements.whenDefined('model-viewer').then(function () { setTimeout(fit, 0); });
   window.addEventListener('resize', fit);

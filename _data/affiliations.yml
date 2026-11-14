@@ -1,0 +1,15 @@
+# Affiliations shown in the fixed footer bar on every page.
+# Drop each logo into images/affiliations/ using exactly the filename in `logo:`.
+# Until a logo file exists, the footer shows the name as a text badge instead.
+# Add, remove or reorder entries freely.
+- name: "IIT Madras"
+  logo: iitm.png
+  url: https://www.iitm.ac.in/
+
+- name: "Wadhwani School of Data Science & AI"
+  logo: wadhwani.png
+  url: https://wsai.iitm.ac.in/
+
+- name: "Harvard University"
+  logo: harvard.png
+  url: https://www.harvard.edu/
