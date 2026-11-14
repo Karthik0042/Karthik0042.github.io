@@ -35,7 +35,7 @@
 }
 .dna-hero__text {
   position: absolute;
-  left: 5%;
+  left: 8%;
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;
@@ -105,7 +105,7 @@
 .dna-explorer__hint {
   position: absolute;
   left: 50%;
-  bottom: 44px;
+  bottom: 64px;
   transform: translateX(-50%);
   margin: 0 !important;
   padding: 4px 12px;
@@ -247,3 +247,8 @@
 .dna-shape-wrap .dna-hero { margin: 0; }
 [data-dna-shape] { border-radius: 0 !important; box-shadow: none !important; }
 .dna-card[data-dna-shape] { filter: none; }
+
+/* Home: let the hero and DNA box use the full content width (no side padding columns) */
+@media (min-width: 1200px) {
+  .page:has(.dna-home) { padding-left: 1em !important; padding-right: 1em !important; }
+}

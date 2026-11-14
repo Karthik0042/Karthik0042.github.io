@@ -2,32 +2,6 @@
 // axis (driven here via model-viewer's `orientation` pitch). Selecting a gold node spins the
 // helix so that segment's replication bubble faces the viewer, zooms in, unzips it (baked glTF
 // morph animation "unzip_<key>") and shows a card.
-// Hand-cut shapes: give every [data-dna-shape="<px>"] element an irregular clip-path whose
-// edges wander inward by up to <px> pixels, with the occasional deeper notch. A new shape is
-// drawn on every page load, so the boxes never look machine-perfect.
-(function () {
-  function edge(n, J) {
-    var pts = [], pos = 0;
-    while (pos < 100) {
-      var notch = Math.random() < 0.12 ? 2.2 : 1;
-      pts.push([pos, Math.random() * J * notch]);
-      pos += 3 + Math.random() * 7;
-    }
-    return pts;
-  }
-  function shape(el) {
-    var J = parseFloat(el.getAttribute('data-dna-shape')) || 12;
-    var p = [];
-    edge(0, J).forEach(function (q) { p.push(q[0].toFixed(1) + '% ' + q[1].toFixed(1) + 'px'); });                                  // top
-    edge(0, J).forEach(function (q) { p.push('calc(100% - ' + q[1].toFixed(1) + 'px) ' + q[0].toFixed(1) + '%'); });                // right
-    edge(0, J).forEach(function (q) { p.push((100 - q[0]).toFixed(1) + '% calc(100% - ' + q[1].toFixed(1) + 'px)'); });           // bottom
-    edge(0, J).forEach(function (q) { p.push(q[1].toFixed(1) + 'px ' + (100 - q[0]).toFixed(1) + '%'); });                         // left
-    el.style.clipPath = 'polygon(' + p.join(', ') + ')';
-    el.style.webkitClipPath = el.style.clipPath;
-  }
-  document.querySelectorAll('[data-dna-shape]').forEach(shape);
-})();
-
 (function () {
   var root = document.querySelector('[data-dna-explorer]');
   if (!root) return;
