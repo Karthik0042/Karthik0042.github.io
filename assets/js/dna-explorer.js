@@ -62,7 +62,7 @@
 
     mv.autoRotate = false;
     mv.cameraTarget = hs.getAttribute('data-position');
-    mv.cameraOrbit = theta.toFixed(1) + 'deg 76deg 6.5m';
+    mv.cameraOrbit = theta.toFixed(1) + 'deg 76deg 9.5m';
     mv.fieldOfView = '30deg';
     root.classList.add('is-open');
     hotspots.forEach(function (h) { h.classList.toggle('is-active', h === hs); });
