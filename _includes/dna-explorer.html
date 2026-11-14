@@ -6,6 +6,7 @@ Section text/links live in _data/dna_hotspots.yml. Usage: {% include dna-explore
 <link rel="stylesheet" href="{{ base_path }}/assets/css/dna.css">
 <script>self.ModelViewerElement = self.ModelViewerElement || {}; self.ModelViewerElement.meshoptDecoderLocation = 'https://cdn.jsdelivr.net/npm/meshoptimizer@0.20.0/meshopt_decoder.js';</script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
+<div class="dna-home">
 <section class="dna-hero">
   <img src="{{ base_path }}/images/dna/hero-1920.jpg" srcset="{{ base_path }}/images/dna/hero-1920.jpg 1920w, {{ base_path }}/images/dna/hero-3840.jpg 3840w" sizes="(min-width: 1200px) 75vw, 100vw" alt="Render of a white and gold DNA double helix unzipping at its centre" fetchpriority="high">
   <div class="dna-hero__text">
@@ -15,10 +16,21 @@ Section text/links live in _data/dna_hotspots.yml. Usage: {% include dna-explore
     <a class="dna-hero__cta" href="#dna-explorer">Explore &darr;</a>
   </div>
 </section>
+{% assign research_courses = site.courses | where: "category", "Research Courses" %}
+<aside class="dna-facts" aria-label="Quick facts">
+  <p class="dna-facts__title">Quick facts</p>
+  <ul>
+    <li><span>Based in</span>Chennai, India</li>
+    <li><span>Studying at</span>IIT Madras</li>
+    <li><span>Coursework</span><a href="{{ base_path }}/portfolio/#academic-courses">{{ site.courses.size }} courses</a> across biology, computation &amp; maths</li>
+    <li><span>Research</span><a href="{{ base_path }}/portfolio/#category-research-courses">{{ research_courses.size }} research courses</a></li>
+    <li><span>Featured</span><a href="{{ base_path }}/online-presence/">iGEM Leadership Feature</a></li>
+  </ul>
+</aside>
 <section class="dna-explorer" id="dna-explorer" data-dna-explorer>
   <div class="dna-explorer__stage">
-    <model-viewer src="{{ base_path }}/assets/models/dna-explorer.glb" alt="Interactive 3D DNA double helix. Gold nodes link to sections of the site." camera-controls auto-rotate auto-rotate-delay="2500" rotation-per-second="14deg" camera-orbit="0deg 82deg auto" min-camera-orbit="auto auto 2.5m" interpolation-decay="120" animation-crossfade-duration="0" interaction-prompt="none" environment-image="neutral" exposure="1.15" shadow-intensity="0" touch-action="pan-y">
-      {% for s in site.data.dna_hotspots %}<button class="dna-hotspot" slot="hotspot-{{ s.key }}" data-key="{{ s.key }}" data-position="{{ s.pos }}" data-normal="{{ s.normal }}" data-visibility-attribute="visible" data-view="{{ s.view }}" data-center="{{ s.center }}" data-title="{{ s.title | escape }}" data-blurb="{{ s.blurb | escape }}" data-url="{{ s.url | prepend: base_path }}" data-image="{{ s.image | prepend: base_path }}" aria-label="Open {{ s.title | escape }}"><span class="dna-hotspot__label">{{ s.title }}</span></button>{% endfor %}
+    <model-viewer src="{{ base_path }}/assets/models/dna-explorer.glb" alt="Interactive 3D DNA double helix. Gold nodes link to sections of the site." camera-controls camera-orbit="0deg 90deg auto" min-camera-orbit="auto 30deg 2.5m" max-camera-orbit="auto 150deg auto" orientation="0deg 0deg 0deg" interpolation-decay="120" animation-crossfade-duration="0" interaction-prompt="none" environment-image="neutral" exposure="1.15" shadow-intensity="0" touch-action="pan-y">
+      {% for s in site.data.dna_hotspots %}<button class="dna-hotspot" slot="hotspot-{{ s.key }}" data-key="{{ s.key }}" data-position="{{ s.pos }}" data-normal="{{ s.normal }}" data-visibility-attribute="visible" data-turn="{{ s.turn }}" data-center="{{ s.center }}" data-title="{{ s.title | escape }}" data-blurb="{{ s.blurb | escape }}" data-url="{{ s.url | prepend: base_path }}" data-image="{{ s.image | prepend: base_path }}" aria-label="Open {{ s.title | escape }}"><span class="dna-hotspot__label">{{ s.title }}</span></button>{% endfor %}
     </model-viewer>
     <p class="dna-explorer__hint">Drag to rotate &middot; Select a gold node to unzip it</p>
     <aside class="dna-card" aria-live="polite" hidden>
@@ -34,4 +46,5 @@ Section text/links live in _data/dna_hotspots.yml. Usage: {% include dna-explore
     </aside>
   </div>
 </section>
+</div>
 <script src="{{ base_path }}/assets/js/dna-explorer.js" defer></script>

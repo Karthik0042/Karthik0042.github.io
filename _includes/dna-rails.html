@@ -1,12 +1,36 @@
 {% comment %}
-Slim spinning DNA strands fixed to the left and right edges of the page.
-Shown only on wide screens (>= 1280px) where there is empty margin. Included from _layouts/default.html.
+Slim spinning DNA strands fixed to the left and right edges of every page, running the full
+window height. Shown only on wide screens (>= 1280px) where there is empty margin.
+Uses a long 90 bp helix (dna-rail.glb); the camera distance is fitted to the strip so the
+helix fills its width and runs off the top and bottom. Included from _layouts/default.html.
 {% endcomment %}{% include base_path %}
 <link rel="stylesheet" href="{{ base_path }}/assets/css/dna.css">
 <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
 <div class="dna-rail dna-rail--left" aria-hidden="true">
-  <model-viewer src="{{ base_path }}/assets/models/dna.glb" alt="" auto-rotate auto-rotate-delay="0" rotation-per-second="16deg" camera-orbit="0deg 90deg 80%" camera-controls disable-zoom disable-pan interaction-prompt="none" environment-image="neutral" exposure="1.1" shadow-intensity="0" touch-action="pan-y" loading="lazy"></model-viewer>
+  <model-viewer src="{{ base_path }}/assets/models/dna-rail.glb" alt="" auto-rotate auto-rotate-delay="0" rotation-per-second="16deg" camera-orbit="0deg 90deg 40m" field-of-view="30deg" min-camera-orbit="auto 90deg 1m" max-camera-orbit="auto 90deg 400m" camera-controls disable-zoom disable-pan interaction-prompt="none" environment-image="neutral" exposure="1.1" shadow-intensity="0" touch-action="pan-y"></model-viewer>
 </div>
 <div class="dna-rail dna-rail--right" aria-hidden="true">
-  <model-viewer src="{{ base_path }}/assets/models/dna.glb" alt="" auto-rotate auto-rotate-delay="0" rotation-per-second="-16deg" camera-orbit="180deg 90deg 80%" camera-controls disable-zoom disable-pan interaction-prompt="none" environment-image="neutral" exposure="1.1" shadow-intensity="0" touch-action="pan-y" loading="lazy"></model-viewer>
+  <model-viewer src="{{ base_path }}/assets/models/dna-rail.glb" alt="" auto-rotate auto-rotate-delay="0" rotation-per-second="-16deg" camera-orbit="180deg 90deg 40m" field-of-view="30deg" min-camera-orbit="auto 90deg 1m" max-camera-orbit="auto 90deg 400m" camera-controls disable-zoom disable-pan interaction-prompt="none" environment-image="neutral" exposure="1.1" shadow-intensity="0" touch-action="pan-y"></model-viewer>
 </div>
+<script>
+(function () {
+  // Fit the camera so the helix (about 2.9 units across incl. phosphates) fills the strip's width.
+  var HALF_WIDTH = 1.45, TAN_HALF_FOV = Math.tan(15 * Math.PI / 180);
+  function fit() {
+    document.querySelectorAll('.dna-rail model-viewer').forEach(function (mv) {
+      var w = mv.clientWidth, h = mv.clientHeight;
+      if (!w || !h) return;
+      var r = HALF_WIDTH / (TAN_HALF_FOV * (w / h));
+      var theta = mv.getCameraOrbit ? mv.getCameraOrbit().theta + 'rad' : '0deg';
+      mv.cameraOrbit = theta + ' 90deg ' + r.toFixed(2) + 'm';
+      if (mv.jumpCameraToGoal) mv.jumpCameraToGoal();
+    });
+  }
+  document.querySelectorAll('.dna-rail model-viewer').forEach(function (mv) {
+    mv.addEventListener('load', fit);
+    if (mv.loaded) fit();            // model may have loaded before this script ran
+  });
+  customElements.whenDefined('model-viewer').then(function () { setTimeout(fit, 0); });
+  window.addEventListener('resize', fit);
+})();
+</script>

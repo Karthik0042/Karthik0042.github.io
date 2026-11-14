@@ -1,52 +1,52 @@
 # Clickable gold phosphates on the Home page DNA.
 # Edit title / blurb / url freely. Do NOT change pos/normal unless the 3D model is re-exported
-# (they are the phosphate coordinates in assets/models/dna-explorer.glb, nudged 0.1 m outward, in metres, glTF Y-up).
+# (phosphate coordinates in assets/models/dna-explorer.glb, which lies along the X axis; nudged outward; metres).
 - key: portfolio
   title: "Portfolio"
   url: /portfolio/
   blurb: "Coursework across the IIT Madras biology & engineering curriculum, plus the projects I've built along the way."
   image: /images/dna/portfolio.jpg
-  pos: "-1.171m 4.25m 0.564m"
-  normal: "-0.901m 0m 0.434m"
-  view: "7.7deg"        # camera angle that faces this segment's replication bubble
-  center: "0m 4.25m 0m"   # bubble centre on the helix axis
+  pos: "4.250m -0.564m 1.171m"
+  normal: "0.000m -0.434m 0.901m"
+  turn: "262.3"        # how far to spin the helix so this bubble faces the viewer (deg)
+  center: "4.250m 0m 0m"   # bubble centre on the (horizontal) helix axis
 
 - key: experience
   title: "Experience"
   url: /experience/
   blurb: "Research, internships and roles that shaped how I work in the lab and beyond."
   image: /images/dna/experience.jpg
-  pos: "-1.052m 2.21m -0.764m"
-  normal: "-0.809m 0m -0.588m"
-  view: "162deg"        # camera angle that faces this segment's replication bubble
-  center: "0m 2.21m 0m"   # bubble centre on the helix axis
+  pos: "2.210m 0.764m 1.052m"
+  normal: "0.000m 0.588m 0.809m"
+  turn: "108"        # how far to spin the helix so this bubble faces the viewer (deg)
+  center: "2.210m 0m 0m"   # bubble centre on the (horizontal) helix axis
 
 - key: online
   title: "Online Presence"
   url: /online-presence/
   blurb: "Videos and features, including my iGEM Leadership Feature and thoughts on life in India and abroad."
   image: /images/dna/online.jpg
-  pos: "-0.136m -0.17m 1.292m"
-  normal: "-0.105m 0m 0.995m"
-  view: "-78deg"        # camera angle that faces this segment's replication bubble
-  center: "0m -0.17m 0m"   # bubble centre on the helix axis
+  pos: "-0.170m -1.293m 0.136m"
+  normal: "0.000m -0.995m 0.105m"
+  turn: "348"        # how far to spin the helix so this bubble faces the viewer (deg)
+  center: "-0.170m 0m 0m"   # bubble centre on the (horizontal) helix axis
 
 - key: hobbies
   title: "Hobbies and Interests"
   url: /hobbies/
   blurb: "What I get up to when I'm not in the lab."
   image: /images/dna/hobbies.jpg
-  pos: "1.243m -1.53m 0.383m"
-  normal: "0.956m 0m 0.295m"
-  view: "144.9deg"        # camera angle that faces this segment's replication bubble
-  center: "0m -1.53m 0m"   # bubble centre on the helix axis
+  pos: "-1.530m -0.383m -1.242m"
+  normal: "0.000m -0.295m -0.956m"
+  turn: "125.1"        # how far to spin the helix so this bubble faces the viewer (deg)
+  center: "-1.530m 0m 0m"   # bubble centre on the (horizontal) helix axis
 
 - key: cv
   title: "CV / Resume"
   url: /cv/
   blurb: "Education, skills and achievements, all on one page."
   image: /images/dna/cv.jpg
-  pos: "0.474m -4.25m -1.21m"
-  normal: "0.365m 0m -0.931m"
-  view: "-129.4deg"        # camera angle that faces this segment's replication bubble
-  center: "0m -4.25m 0m"   # bubble centre on the helix axis
+  pos: "-4.250m 1.210m -0.475m"
+  normal: "0.000m 0.931m -0.365m"
+  turn: "39.4"        # how far to spin the helix so this bubble faces the viewer (deg)
+  center: "-4.250m 0m 0m"   # bubble centre on the (horizontal) helix axis

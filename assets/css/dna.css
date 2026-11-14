@@ -95,12 +95,12 @@
 }
 .dna-explorer model-viewer {
   width: 100%;
-  height: 680px;
+  height: 460px;
   --poster-color: transparent;
   --progress-bar-color: var(--dna-gold);
   --progress-bar-height: 2px;
 }
-@media (max-width: 700px) { .dna-explorer model-viewer { height: 520px; } }
+@media (max-width: 700px) { .dna-explorer model-viewer { height: 380px; } }
 
 .dna-explorer__hint {
   position: absolute;
@@ -229,4 +229,64 @@
 
 @media (prefers-reduced-motion: reduce) {
   .dna-hero img, .dna-card__media img, .dna-hotspot::before { animation: none; }
+}
+
+/* ---------- Quick facts (home) ----------
+   Wide screens: a narrow card in the empty margin to the right of the content.
+   Narrower screens: a row of facts between the hero and the helix. */
+.dna-home { position: relative; }
+.dna-facts {
+  margin: -1em 0 2em;
+  padding: 1.1em 1.2em;
+  border-radius: 12px;
+  background: var(--dna-panel);
+  box-shadow: 0 0 0 1px var(--dna-line);
+}
+.dna-facts__title {
+  margin: 0 0 0.8em !important;
+  color: var(--dna-gold);
+  font-size: 11px !important;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+.dna-facts ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.9em 1.4em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.dna-facts li {
+  margin: 0;
+  color: var(--dna-ink);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.dna-facts li span {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--dna-muted);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.dna-facts a { color: var(--dna-gold) !important; text-decoration: none !important; }
+.dna-facts a:hover { text-decoration: underline !important; }
+
+@media (min-width: 1200px) {
+  .dna-facts {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 22px);
+    width: 172px;
+    margin: 0;
+  }
+  .dna-facts ul { grid-template-columns: 1fr; gap: 1em; }
+}
+
+/* Mid widths: the content column is narrow, so give the hero enough height for its text */
+@media (min-width: 701px) and (max-width: 1199px) {
+  .dna-hero { aspect-ratio: auto; min-height: 360px; }
+  .dna-hero__text { max-width: 55%; }
 }
