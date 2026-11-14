@@ -1,0 +1,70 @@
+/* ==========================================================================
+   SINGLE-COLUMN LAYOUT
+   The author profile sits centred above the content instead of in a fixed
+   left sidebar; page content is one centred column.
+   ========================================================================== */
+
+$single-column-max-width: 1000px;
+
+@media screen and (min-width: $sidebar-screen-min-width) {
+  .sidebar {
+    position: static;
+    height: auto;
+    overflow: visible;
+    padding-top: 0;
+  }
+}
+
+@include breakpoint($large) {
+  .sidebar {
+    float: none;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto 2.5em;
+    padding: 0;
+    text-align: center;
+
+    .author__avatar img {
+      max-width: 160px;
+    }
+
+    .author__name {
+      margin: 12px 0 4px;
+    }
+
+    .author__bio {
+      margin: 0 0 4px;
+    }
+
+    .author__bio-attribution {
+      margin-bottom: 14px;
+    }
+
+    // contact + links as one centred row
+    .author__urls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4em 1.6em;
+
+      li {
+        margin: 0;
+      }
+
+      a {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .page,
+  .archive {
+    float: none;
+    width: 100%;
+    max-width: $single-column-max-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
