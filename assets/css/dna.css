@@ -105,7 +105,7 @@
 .dna-explorer__hint {
   position: absolute;
   left: 50%;
-  bottom: 12px;
+  bottom: 44px;
   transform: translateX(-50%);
   margin: 0 !important;
   padding: 4px 12px;
