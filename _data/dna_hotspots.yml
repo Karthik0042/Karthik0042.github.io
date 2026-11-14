@@ -1,0 +1,42 @@
+# Clickable gold phosphates on the Home page DNA.
+# Edit title / blurb / url freely. Do NOT change pos/normal unless the 3D model is re-exported
+# (they are the exact phosphate coordinates in assets/models/dna.glb, in metres, glTF Y-up).
+- key: portfolio
+  title: "Portfolio"
+  url: /portfolio/
+  blurb: "Coursework across the IIT Madras biology & engineering curriculum, plus the projects I've built along the way."
+  image: /images/dna/portfolio.jpg
+  pos: "-1.081m 4.25m 0.521m"
+  normal: "-0.901m 0m 0.434m"
+
+- key: experience
+  title: "Experience"
+  url: /experience/
+  blurb: "Research, internships and roles that shaped how I work in the lab and beyond."
+  image: /images/dna/experience.jpg
+  pos: "-0.971m 2.21m -0.705m"
+  normal: "-0.809m 0m -0.588m"
+
+- key: online
+  title: "Online Presence"
+  url: /online-presence/
+  blurb: "Videos and features, including my iGEM Leadership Feature and thoughts on life in India and abroad."
+  image: /images/dna/online.jpg
+  pos: "-0.125m -0.17m 1.193m"
+  normal: "-0.105m 0m 0.995m"
+
+- key: hobbies
+  title: "Hobbies and Interests"
+  url: /hobbies/
+  blurb: "What I get up to when I'm not in the lab."
+  image: /images/dna/hobbies.jpg
+  pos: "1.147m -1.53m 0.354m"
+  normal: "0.956m 0m 0.295m"
+
+- key: cv
+  title: "CV / Resume"
+  url: /cv/
+  blurb: "Education, skills and achievements, all on one page."
+  image: /images/dna/cv.jpg
+  pos: "0.438m -4.25m -1.117m"
+  normal: "0.365m 0m -0.931m"

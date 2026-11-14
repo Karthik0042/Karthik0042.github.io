@@ -16,6 +16,8 @@ layout: compress
     {% include browser-upgrade.html %}
     {% include masthead.html %}
 
+    {% unless page.url == "/" %}{% include dna-rails.html %}{% endunless %}
+
     {{ content }}
 
     <div class="page__footer">
