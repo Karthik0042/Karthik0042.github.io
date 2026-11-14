@@ -175,10 +175,10 @@
 }
 .dna-card[hidden] { display: none; }
 @keyframes dna-card-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-.dna-card__media { aspect-ratio: 16 / 9; overflow: hidden; background: #000; }
+.dna-card__media { aspect-ratio: 21 / 9; overflow: hidden; background: #000; }
 .dna-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; animation: dna-zoom 6s ease-out both; }
 @keyframes dna-zoom { from { transform: scale(1.15); } to { transform: scale(1); } }
-.dna-card__body { padding: 1.1em 1.25em 1.25em; }
+.dna-card__body { padding: 0.9em 1.2em 1.1em; }
 .dna-card h3 { margin: 0 0 0.4em; padding: 0; border: 0; color: var(--dna-ink); font-size: 1.3em; }
 .dna-card__blurb { margin: 0 !important; color: #cfcfcf; font-size: 0.88em; line-height: 1.5; }
 .dna-card__actions { display: flex; flex-wrap: wrap; gap: 0.6em; margin-top: 1em; }
@@ -231,62 +231,19 @@
   .dna-hero img, .dna-card__media img, .dna-hotspot::before { animation: none; }
 }
 
-/* ---------- Quick facts (home) ----------
-   Wide screens: a narrow card in the empty margin to the right of the content.
-   Narrower screens: a row of facts between the hero and the helix. */
-.dna-home { position: relative; }
-.dna-facts {
-  margin: -1em 0 2em;
-  padding: 1.1em 1.2em;
-  border-radius: 12px;
-  background: var(--dna-panel);
-  box-shadow: 0 0 0 1px var(--dna-line);
-}
-.dna-facts__title {
-  margin: 0 0 0.8em !important;
-  color: var(--dna-gold);
-  font-size: 11px !important;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-}
-.dna-facts ul {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 0.9em 1.4em;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.dna-facts li {
-  margin: 0;
-  color: var(--dna-ink);
-  font-size: 13px;
-  line-height: 1.4;
-}
-.dna-facts li span {
-  display: block;
-  margin-bottom: 2px;
-  color: var(--dna-muted);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.dna-facts a { color: var(--dna-gold) !important; text-decoration: none !important; }
-.dna-facts a:hover { text-decoration: underline !important; }
-
-@media (min-width: 1200px) {
-  .dna-facts {
-    position: absolute;
-    top: 0;
-    left: calc(100% + 22px);
-    width: 172px;
-    margin: 0;
-  }
-  .dna-facts ul { grid-template-columns: 1fr; gap: 1em; }
-}
-
 /* Mid widths: the content column is narrow, so give the hero enough height for its text */
 @media (min-width: 701px) and (max-width: 1199px) {
   .dna-hero { aspect-ratio: auto; min-height: 360px; }
   .dna-hero__text { max-width: 55%; }
 }
+
+/* ---------- Hand-cut shapes (home) ----------
+   assets/js/dna-explorer.js gives elements with [data-dna-shape] an irregular clip-path.
+   The gold outline comes from drop-shadow filters on the parent, which follow the cut edge. */
+.dna-shape-wrap, .dna-explorer {
+  filter: drop-shadow(0 0 0.8px rgba(212, 175, 55, 0.95)) drop-shadow(0 14px 26px rgba(0, 0, 0, 0.55));
+}
+.dna-shape-wrap { margin: 0 0 2.5em; }
+.dna-shape-wrap .dna-hero { margin: 0; }
+[data-dna-shape] { border-radius: 0 !important; box-shadow: none !important; }
+.dna-card[data-dna-shape] { filter: none; }
