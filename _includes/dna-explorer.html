@@ -1,45 +1,37 @@
 {% comment %}
-Home page DNA: 4K hero banner + interactive helix with clickable phosphates.
+Home page DNA: 4K hero banner + interactive helix with clickable phosphates that unzip their segment.
 Section text/links live in _data/dna_hotspots.yml. Usage: {% include dna-explorer.html %}
 (Kept free of blank lines so Markdown pages pass it through as raw HTML.)
 {% endcomment %}{% include base_path %}
 <link rel="stylesheet" href="{{ base_path }}/assets/css/dna.css">
+<script>self.ModelViewerElement = self.ModelViewerElement || {}; self.ModelViewerElement.meshoptDecoderLocation = 'https://cdn.jsdelivr.net/npm/meshoptimizer@0.20.0/meshopt_decoder.js';</script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
 <section class="dna-hero">
-  <img src="{{ base_path }}/images/dna/hero-1920.jpg" srcset="{{ base_path }}/images/dna/hero-1920.jpg 1920w, {{ base_path }}/images/dna/hero-3840.jpg 3840w" sizes="(min-width: 1200px) 75vw, 100vw" alt="Cinematic render of a white and gold DNA double helix unzipping at its centre" fetchpriority="high">
+  <img src="{{ base_path }}/images/dna/hero-1920.jpg" srcset="{{ base_path }}/images/dna/hero-1920.jpg 1920w, {{ base_path }}/images/dna/hero-3840.jpg 3840w" sizes="(min-width: 1200px) 75vw, 100vw" alt="Render of a white and gold DNA double helix unzipping at its centre" fetchpriority="high">
   <div class="dna-hero__text">
-    <p class="dna-hero__kicker">Welcome</p>
-    <h2 class="dna-hero__title">Explore my <span>DNA</span></h2>
-    <p class="dna-hero__sub">Every gold phosphate below opens a part of who I am. Spin the helix, pick a strand.</p>
-    <a class="dna-hero__cta" href="#dna-explorer">Start exploring &darr;</a>
+    <p class="dna-hero__kicker">IIT Madras</p>
+    <h2 class="dna-hero__title">Explore my <span>profile</span></h2>
+    <p class="dna-hero__sub">An overview of my coursework, experience and interests. Select a gold node on the helix below to open a section.</p>
+    <a class="dna-hero__cta" href="#dna-explorer">Explore &darr;</a>
   </div>
 </section>
 <section class="dna-explorer" id="dna-explorer" data-dna-explorer>
   <div class="dna-explorer__stage">
-    <model-viewer src="{{ base_path }}/assets/models/dna.glb" alt="Interactive 3D DNA double helix. Gold markers link to sections of the site." camera-controls auto-rotate auto-rotate-delay="2500" rotation-per-second="14deg" camera-orbit="0deg 82deg auto" min-camera-orbit="auto auto 2.2m" interpolation-decay="120" interaction-prompt="none" environment-image="neutral" exposure="1.15" shadow-intensity="0" touch-action="pan-y">
-      {% for s in site.data.dna_hotspots %}<button class="dna-hotspot" slot="hotspot-{{ s.key }}" data-key="{{ s.key }}" data-position="{{ s.pos }}" data-normal="{{ s.normal }}" data-visibility-attribute="visible" data-title="{{ s.title | escape }}" data-blurb="{{ s.blurb | escape }}" data-url="{{ s.url | prepend: base_path }}" data-image="{{ s.image | prepend: base_path }}" aria-label="Explore {{ s.title | escape }}"><span class="dna-hotspot__label">{{ s.title }}</span></button>{% endfor %}
+    <model-viewer src="{{ base_path }}/assets/models/dna-explorer.glb" alt="Interactive 3D DNA double helix. Gold nodes link to sections of the site." camera-controls auto-rotate auto-rotate-delay="2500" rotation-per-second="14deg" camera-orbit="0deg 82deg auto" min-camera-orbit="auto auto 2.5m" interpolation-decay="120" animation-crossfade-duration="0" interaction-prompt="none" environment-image="neutral" exposure="1.15" shadow-intensity="0" touch-action="pan-y">
+      {% for s in site.data.dna_hotspots %}<button class="dna-hotspot" slot="hotspot-{{ s.key }}" data-key="{{ s.key }}" data-position="{{ s.pos }}" data-normal="{{ s.normal }}" data-visibility-attribute="visible" data-title="{{ s.title | escape }}" data-blurb="{{ s.blurb | escape }}" data-url="{{ s.url | prepend: base_path }}" data-image="{{ s.image | prepend: base_path }}" aria-label="Open {{ s.title | escape }}"><span class="dna-hotspot__label">{{ s.title }}</span></button>{% endfor %}
     </model-viewer>
-    <p class="dna-explorer__hint">Drag to spin &middot; Scroll to zoom &middot; Click a gold phosphate</p>
-  </div>
-  <aside class="dna-card" aria-live="polite">
-    <div class="dna-card__intro">
-      <p class="dna-card__eyebrow">Double helix navigator</p>
-      <h3>Pick a phosphate</h3>
-      <p>Each glowing gold node is anchored to a different segment of the strand. Click one and the helix zooms in and unzips that part of the story.</p>
-      <ul class="dna-card__list">
-        {% for s in site.data.dna_hotspots %}<li><button class="dna-chip" type="button" data-dna-select="{{ s.key }}">{{ s.title }}</button></li>{% endfor %}
-      </ul>
-    </div>
-    <div class="dna-card__detail" hidden>
+    <p class="dna-explorer__hint">Drag to rotate &middot; Select a gold node to unzip it</p>
+    <aside class="dna-card" aria-live="polite" hidden>
       <div class="dna-card__media"><img src="" alt="" loading="lazy"></div>
-      <p class="dna-card__eyebrow">Segment unzipped</p>
-      <h3></h3>
-      <p class="dna-card__blurb"></p>
-      <div class="dna-card__actions">
-        <a class="dna-card__go" href="#">Open &rarr;</a>
-        <button class="dna-card__back" type="button">&larr; Back to full helix</button>
+      <div class="dna-card__body">
+        <h3></h3>
+        <p class="dna-card__blurb"></p>
+        <div class="dna-card__actions">
+          <a class="dna-card__go" href="#">Open &rarr;</a>
+          <button class="dna-card__back" type="button">&larr; Close</button>
+        </div>
       </div>
-    </div>
-  </aside>
+    </aside>
+  </div>
 </section>
 <script src="{{ base_path }}/assets/js/dna-explorer.js" defer></script>
