@@ -33,6 +33,10 @@
   mv.addEventListener('load', fitHome);
   if (mv.loaded) fitHome();
   window.addEventListener('resize', fitHome);
+  // The stage can settle its final size after the model loads (fonts, layout, other scripts):
+  // re-fit whenever its size changes, and once more shortly after load.
+  if (window.ResizeObserver) new ResizeObserver(function () { fitHome(); }).observe(mv);
+  window.addEventListener('load', function () { setTimeout(fitHome, 300); setTimeout(fitHome, 1500); });
   var SPIN_DEG_PER_S = 14;
   var OPEN_T = 0.999;          // end of the 1 s unzip clip (stay just short of the loop point)
   var angle = 0;               // current spin of the helix about its own axis (deg)
@@ -50,9 +54,14 @@
   var last = performance.now();
   (function loop(now) {
     var dt = (now - last) / 1000; last = now;
-    if (spinning && now > pauseUntil) setAngle(angle + SPIN_DEG_PER_S * dt);
+    if (spinning && onScreen && now > pauseUntil) setAngle(angle + SPIN_DEG_PER_S * dt);
     requestAnimationFrame(loop);
   })(last);
+  // Don't spin (and so don't re-render the 3D view) while it is scrolled out of sight.
+  var onScreen = true;
+  if (window.IntersectionObserver) {
+    new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; }).observe(mv);
+  }
   mv.addEventListener('camera-change', function (e) {
     if (e.detail && e.detail.source === 'user-interaction') pauseUntil = performance.now() + 2500;
   });

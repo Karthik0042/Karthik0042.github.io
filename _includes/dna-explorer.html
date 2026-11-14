@@ -24,7 +24,7 @@ Section text/links live in _data/dna_hotspots.yml. Usage: {% include dna-explore
       {% for s in site.data.dna_hotspots %}<button class="dna-hotspot" slot="hotspot-{{ s.key }}" data-key="{{ s.key }}" data-position="{{ s.pos }}" data-normal="{{ s.normal }}" data-visibility-attribute="visible" data-turn="{{ s.turn }}" data-center="{{ s.center }}" data-title="{{ s.title | escape }}" data-blurb="{{ s.blurb | escape }}" data-url="{{ s.url | prepend: base_path }}" data-image="{{ s.image | prepend: base_path }}" aria-label="Open {{ s.title | escape }}"><span class="dna-hotspot__label">{{ s.title }}</span></button>{% endfor %}
     </model-viewer>
     <p class="dna-explorer__hint">Drag to rotate &middot; Select a gold node to unzip it</p>
-    <aside class="dna-card" aria-live="polite" data-dna-shape="10" hidden>
+    <aside class="dna-card" aria-live="polite" data-dna-shape="10" data-jag-outline="none" hidden>
       <div class="dna-card__media"><img src="" alt="" loading="lazy"></div>
       <div class="dna-card__body">
         <h3></h3>

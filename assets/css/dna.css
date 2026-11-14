@@ -30,8 +30,6 @@
   display: block;
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 38%);
           mask-image: linear-gradient(90deg, transparent 0%, #000 38%);
-  transform: scale(1.04);
-  animation: dna-hero-drift 18s ease-in-out infinite alternate;
 }
 .dna-hero__text {
   position: absolute;
@@ -74,7 +72,6 @@
   transition: background 0.2s, color 0.2s;
 }
 .dna-hero__cta:hover { background: var(--dna-gold); color: #000 !important; }
-@keyframes dna-hero-drift { from { transform: scale(1.04) translateX(0); } to { transform: scale(1.1) translateX(-1.5%); } }
 
 @media (max-width: 700px) {
   .dna-hero { aspect-ratio: 4 / 3; }
@@ -238,15 +235,10 @@
 }
 
 /* ---------- Hand-cut shapes (home) ----------
-   assets/js/dna-explorer.js gives elements with [data-dna-shape] an irregular clip-path.
-   The gold outline comes from drop-shadow filters on the parent, which follow the cut edge. */
-.dna-shape-wrap, .dna-explorer {
-  filter: drop-shadow(0 0 0.8px rgba(212, 175, 55, 0.95)) drop-shadow(0 14px 26px rgba(0, 0, 0, 0.55));
-}
+   assets/js/jagged.js cuts [data-dna-shape] boxes and adds a static glowing trim layer behind them. */
 .dna-shape-wrap { margin: 0 0 2.5em; }
 .dna-shape-wrap .dna-hero { margin: 0; }
 [data-dna-shape] { border-radius: 0 !important; box-shadow: none !important; }
-.dna-card[data-dna-shape] { filter: none; }
 
 /* Home: let the hero and DNA box use the full content width (no side padding columns) */
 @media (min-width: 1200px) {

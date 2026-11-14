@@ -18,12 +18,21 @@ body { padding-bottom: var(--footer-bar-h); }
 /* Side DNA strands stop above the bar */
 .dna-rail { bottom: var(--footer-bar-h) !important; }
 
-/* Jagged boxes (assets/js/jagged.js): outline follows the torn edge via drop-shadow on a wrapper */
-.jag-wrap--gold {
-  filter: drop-shadow(0 0 1.5px rgba(212, 175, 55, 0.95)) drop-shadow(0 0 10px rgba(212, 175, 55, 0.35));
-}
-.author__avatar .jag-wrap { display: inline-block; }
-.jag-wrap--crimson {
-  filter: drop-shadow(0 0 1px rgba(220, 20, 60, 0.9)) drop-shadow(0 10px 22px rgba(0, 0, 0, 0.5));
-}
+/* Jagged boxes (assets/js/jagged.js) */
 .is-jagged { border-color: transparent !important; border-radius: 0 !important; box-shadow: none !important; }
+
+/* Glowing trim: a static layer behind the box, cut to the same shape, a few px larger.
+   The glow filter sits on this layer only, so it is drawn once and cached. */
+.jag-front { position: relative; z-index: 1; }
+.jag-back { position: absolute; z-index: 0; pointer-events: none; }
+.jag-back__shape { position: absolute; inset: 0; }
+.jag-back--goldred {
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.55)) drop-shadow(0 0 16px rgba(220, 20, 60, 0.35));
+}
+.jag-back--goldred .jag-back__shape {
+  background: linear-gradient(135deg, #d4af37 0%, #dc143c 35%, #d4af37 55%, #c0c0c0 75%, #dc143c 100%);
+}
+.jag-back--crimson { filter: drop-shadow(0 0 8px rgba(220, 20, 60, 0.45)); }
+.jag-back--crimson .jag-back__shape { background: rgba(220, 20, 60, 0.85); }
+
+.author__avatar .jag-front { animation-name: none !important; }
