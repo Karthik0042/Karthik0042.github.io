@@ -208,7 +208,7 @@
 }
 
 /* While a segment is unzipped, hide the other nodes and the hint */
-.dna-explorer.is-open .dna-hotspot { opacity: 0 !important; pointer-events: none; }
+.dna-explorer.is-open .dna-hotspot { display: none !important; }
 .dna-explorer.is-open .dna-explorer__hint { opacity: 0; }
 .dna-explorer__hint { transition: opacity 0.3s; }
 

@@ -8,6 +8,8 @@
   image: /images/dna/portfolio.jpg
   pos: "-1.171m 4.25m 0.564m"
   normal: "-0.901m 0m 0.434m"
+  view: "7.7deg"        # camera angle that faces this segment's replication bubble
+  center: "0m 4.25m 0m"   # bubble centre on the helix axis
 
 - key: experience
   title: "Experience"
@@ -16,6 +18,8 @@
   image: /images/dna/experience.jpg
   pos: "-1.052m 2.21m -0.764m"
   normal: "-0.809m 0m -0.588m"
+  view: "162deg"        # camera angle that faces this segment's replication bubble
+  center: "0m 2.21m 0m"   # bubble centre on the helix axis
 
 - key: online
   title: "Online Presence"
@@ -24,6 +28,8 @@
   image: /images/dna/online.jpg
   pos: "-0.136m -0.17m 1.292m"
   normal: "-0.105m 0m 0.995m"
+  view: "-78deg"        # camera angle that faces this segment's replication bubble
+  center: "0m -0.17m 0m"   # bubble centre on the helix axis
 
 - key: hobbies
   title: "Hobbies and Interests"
@@ -32,6 +38,8 @@
   image: /images/dna/hobbies.jpg
   pos: "1.243m -1.53m 0.383m"
   normal: "0.956m 0m 0.295m"
+  view: "144.9deg"        # camera angle that faces this segment's replication bubble
+  center: "0m -1.53m 0m"   # bubble centre on the helix axis
 
 - key: cv
   title: "CV / Resume"
@@ -40,3 +48,5 @@
   image: /images/dna/cv.jpg
   pos: "0.474m -4.25m -1.21m"
   normal: "0.365m 0m -0.931m"
+  view: "-129.4deg"        # camera angle that faces this segment's replication bubble
+  center: "0m -4.25m 0m"   # bubble centre on the helix axis

@@ -57,12 +57,17 @@
   function select(key) {
     var hs = root.querySelector('.dna-hotspot[data-key="' + key + '"]');
     if (!hs) return;
-    var n = hs.getAttribute('data-normal').split(/\s+/).map(parseFloat);
-    var theta = Math.atan2(n[0], n[2]) * 180 / Math.PI; // face the node head-on
-
+    // Face the replication bubble square-on (angle + centre precomputed from the Blender model)
+    var view = parseFloat(hs.getAttribute('data-view') || '0');
+    var c = (hs.getAttribute('data-center') || hs.getAttribute('data-position')).split(/\s+/).map(parseFloat);
+    // On wide screens the card sits on the right: aim the camera right of the bubble
+    // so the bubble itself shows in the clear left part of the stage.
+    var shift = window.innerWidth > 700 ? 2.2 : 0;
+    var rad = view * Math.PI / 180;
+    var tx = c[0] + Math.cos(rad) * shift, tz = c[2] - Math.sin(rad) * shift;
     mv.autoRotate = false;
-    mv.cameraTarget = hs.getAttribute('data-position');
-    mv.cameraOrbit = theta.toFixed(1) + 'deg 76deg 9.5m';
+    mv.cameraTarget = tx.toFixed(3) + 'm ' + c[1] + 'm ' + tz.toFixed(3) + 'm';
+    mv.cameraOrbit = view + 'deg 82deg 20m';
     mv.fieldOfView = '30deg';
     root.classList.add('is-open');
     hotspots.forEach(function (h) { h.classList.toggle('is-active', h === hs); });
